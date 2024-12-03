@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    
+    <ul id="navbar">
+
+        
+
+    </ul>
+    <div class="container"><br>
+        <h1>Registrer time</h1>
+
+
+
+        <form class="registerActivityForm" id="registerActivityForm" action="/addactivity" method="POST">
+            <input type="time" id="time" name="time" required><br>
+            <select name="room" id="room" required></select><br>
+            <select name="subject" id="subject" required></select><br>
+            <button type = "submit" id ="activity">register</button><br>
+        </form>
+        
+    </div>
+    <script src="./index.js"></script>
+</body>
+</html>

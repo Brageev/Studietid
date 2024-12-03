@@ -1,9 +1,36 @@
-fetchUsers()
+fetchData()
 
 const params = new URLSearchParams(window.location.search);
 // Retrieve individual parameters
 const errorMsg = params.get('errorMsg'); 
 console.log(errorMsg)
+
+
+
+
+
+ 
+
+async function fetchData(){
+    fetchUsers()
+    fetchRooms()
+    fetchSubjects()
+
+}
+
+
+
+async function fetchNavbar() {
+    try {
+        let response = await fetch('/navbar');
+        let navbarHtml = await response.text();
+        document.getElementById('navbar').innerHTML = navbarHtml;
+    } catch (error) {
+        console.error('Error fetching navbar:', error);
+    }
+}
+
+fetchNavbar();
 
 async function fetchUsers() {
     try {
@@ -15,11 +42,31 @@ async function fetchUsers() {
         for (let i = 0; i < data.length; i++) {
             console.log(data[i]);
         }
+        showUsers(data);
 
     } catch (error) {
         console.error('Error:', error); // Håndterer eventuelle feil
     }
 }
+
+
+async function showUsers(users) {
+
+    const userList = document.getElementById('userList');
+    userList.innerHTML = '<tr><th>Id</th><th>fornavn</th><th>etternavn</th><th>rolle</th></tr>'; 
+    
+    users.forEach((user, index) => {
+        const listItem = document.createElement('tr');
+        listItem.id = index;
+        userList.innerHTML += `<tr><td>${index + 1}</td><td>${user.firstName}</td><td>${user.lastName}</td><td>${user.role}</td></tr>`;
+
+    });
+
+
+}
+
+showUsers();
+
 
 const regForm = document.getElementById('registerForm')
 //regForm.addEventListener('submit', adduser)
