@@ -263,14 +263,12 @@ function addActivity(idUser, time, room, subject, status, duration, currentDate)
     sql = db.prepare("INSERT INTO activity (idUser, startTime, idRoom, idSubject, idStatus, duration, date) " +
                          "values (?, ?, ?, ?, ?, ?, ?)")
     const info = sql.run(idUser, time, room, subject, status, duration, currentDate)
-    
     sql = db.prepare('SELECT activity.id as activityId, date, startTime, room.name as room, subject.name as subject, status.name as status, duration ' + 
         'FROM activity ' +
         'INNER JOIN room ON activity.idRoom = room.id ' +
         'INNER JOIN subject ON activity.idSubject = subject.id ' +
         'INNER JOIN status ON activity.idStatus = status.id ' +
         'INNER JOIN user ON activity.idUser = user.id ' +
-
         'WHERE activity.id = ?');
     let rows = sql.all(info.lastInsertRowid)  
     console.log('row inserted', rows[0])

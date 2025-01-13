@@ -34,14 +34,14 @@ async function showActivities(activities) {
     
     activities.forEach((activity, index) => {
         if (activity.statusid == 3) {
-            console.log("test1");
             const listItem = document.createElement('tr');
             listItem.id = index;
-            console.log("test2" + activity);
 
             listItem.innerHTML = `<td>${activity.userFirstName} ${activity.userLastName}</td><td>${activity.startTime}</td><td>${activity.date}</td><td>${activity.room}</td><td>${activity.subject}</td>`;
             activityList.appendChild(listItem);
-            console.log("test3");}
+        
+        
+        }
 
     });
 } 
