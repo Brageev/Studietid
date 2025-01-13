@@ -67,7 +67,7 @@ async function showSubjects(subjects) {
 }
 
 
-const regSubForm = document.getElementById('registerActivityForm')
+const regForm = document.getElementById('registerActivityForm')
 //regForm.addEventListener('submit', adduser)
 async function addactivity(event) {
     event.preventDefault();
